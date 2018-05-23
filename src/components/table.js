@@ -100,13 +100,16 @@ class TableId extends React.Component {
         
           var date = this.state.date;
         
-          var x = month;
-          if (x === "") {
-            alert("please provide month to proceed");
+          
+          if (month === "" || month < 1 || month >12 ) {
+            alert("please provide valid month to proceed");
           } else if (date === "") {
-            alert("please provide date to proceed");
-          } else if (year === "") {
-            alert("please provide year to proceed");
+            alert("please provide valid date to proceed");
+          }else if(date > 31 || date < 1){
+            alert("please enter valid date")
+          } 
+          else if (year === "" || year < 0) {
+            alert("please provide valid year to proceed");
           } else {
             var  Month = parseInt(month,10);
             var  parsedYear = parseInt(year,10);
@@ -139,7 +142,7 @@ class TableId extends React.Component {
             var  D = parseInt(date,10);
           
           
-            //calculating day in terms of number(0-1) of each months
+            //calculating day in terms of number(0-6) of each months
              if (Month === 1) { //jan
                if (finalYearMod % 4 === 0) {
                  res = res - 1;
